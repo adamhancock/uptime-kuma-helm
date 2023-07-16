@@ -8,11 +8,11 @@ image:
   repository: louislam/uptime-kuma
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "1.18.0-alpine"
+  tag: '1.22.1-alpine'
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 # If this option is set to false a StateFulset instead of a Deployment is used
 useDeploy: true
@@ -24,20 +24,23 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: ''
 
 podAnnotations: {}
-podLabels: {}
+podLabels:
+  {}
   # app: uptime-kuma
 podEnv:
   # a default port must be set. required by container
-  - name: "UPTIME_KUMA_PORT"
-    value: "3001"
+  - name: 'UPTIME_KUMA_PORT'
+    value: '3001'
 
-podSecurityContext: {}
+podSecurityContext:
+  {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  {}
   # capabilities:
   #   drop:
   #   - ALL
@@ -53,13 +56,14 @@ service:
 ingress:
   enabled: false
   # className: ""
-  extraLabels: {}
+  extraLabels:
+    {}
     # vhost: uptime-kuma.company.corp
   annotations:
     kubernetes.io/ingress.class: external
     ingress.annotations.cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '3600'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '3600'
     nginx.ingress.kubernetes.io/server-snippets: |
       location / {
         proxy_set_header Upgrade $http_upgrade;
@@ -87,7 +91,8 @@ ingress:
     #   hosts:
     #     - chart-example.local
 
-resources: {}
+resources:
+  {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
